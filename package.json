@@ -1,7 +1,10 @@
 {
-  "name": "your-package-name",
+  "name": "@digimuza/graphql",
   "description": "Description",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
@@ -41,16 +44,15 @@
     "build": "rm -rf lib && tsc --build",
     "format": "prettier --write \"**/src/**/*.ts\"",
     "watch": "yarn link && tsc --watch",
-    "test": "jest",
-    "postinstall": "git config core.hooksPath .githooks"
+    "test": "jest"
   },
   "author": "digimuza",
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^27.5.1",
     "@types/node": "^13.13.5",
-    "jest": "^28.1.0",
     "git-conventional-commits": "^1.2.0",
+    "jest": "^28.1.0",
     "prettier": "^2.6.2",
     "ts-jest": "^28.0.3",
     "tslib": "^2.4.0",
@@ -58,6 +60,10 @@
     "typescript": "4.5.x"
   },
   "dependencies": {
+    "@digimuza/graphql": "^0.0.1",
+    "graphql": "^16.5.0",
+    "graphql-request": "^4.3.0",
+    "graphql-ws": "^5.9.1",
     "ts-prime": "^1.0.0"
   }
 }
