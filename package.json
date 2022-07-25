@@ -1,7 +1,7 @@
 {
   "name": "@digimuza/graphql",
   "description": "Description",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publishConfig": {
     "access": "public"
   },
@@ -61,7 +61,7 @@
   },
   "dependencies": {
     "@digimuza/graphql": "^0.0.1",
-    "graphql": "^16.5.0",
+    "graphql": "^15.3.0",
     "graphql-request": "^4.3.0",
     "graphql-ws": "^5.9.1",
     "ts-prime": "^1.0.0"
