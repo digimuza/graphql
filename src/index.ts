@@ -1,5 +1,5 @@
 import { Client } from 'graphql-ws'
-import { GraphQLClient } from 'graphql-request'
+import { GraphQLClient, GraphQLWebSocketClient } from 'graphql-request'
 import { Observable } from 'rxjs'
 import { DocumentNode, Kind, print } from 'graphql'
 function operationType(data: DocumentNode) {
@@ -12,7 +12,7 @@ function operationType(data: DocumentNode) {
 }
 
 export type Requester<C = {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R> & Observable<R>
-export function createRequester(options: { websocket?: Client; request?: GraphQLClient }): Requester {
+export function createRequester(options: { websocket?: GraphQLWebSocketClient; request?: GraphQLClient }): Requester {
 	return (query, vars) => {
 		const op = operationType(query)
 		if (op === 'subscription') {
@@ -20,7 +20,7 @@ export function createRequester(options: { websocket?: Client; request?: GraphQL
 			if (ws == null) throw new Error('Websocket Client is not provided!')
 			return new Observable<any>((observer) => {
 				return ws.subscribe(
-					{ query: print(query), variables: vars as any },
+					query,
 					{
 						next: (c) => {
 							observer.next(c.data)
@@ -31,7 +31,8 @@ export function createRequester(options: { websocket?: Client; request?: GraphQL
 						error: (err) => {
 							observer.error(err)
 						},
-					}
+					},
+					vars
 				)
 			}) as any
 		}

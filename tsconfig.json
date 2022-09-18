@@ -25,7 +25,7 @@
         "typeRoots": [
             "./node_modules/@types"
         ],
-        "outDir": "./lib"
+        "outDir": "./lib/lib"
     },
     "include": [
         "./src/**/*"

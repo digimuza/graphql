@@ -1,7 +1,7 @@
 {
   "name": "@digimuza/graphql",
   "description": "Description",
-  "version": "0.0.4",
+  "version": "0.1.1",
   "publishConfig": {
     "access": "public"
   },
@@ -49,6 +49,7 @@
   "author": "digimuza",
   "license": "MIT",
   "devDependencies": {
+    "@digimuza/nscript": "^0.1.1",
     "@types/jest": "^27.5.1",
     "@types/node": "^13.13.5",
     "git-conventional-commits": "^1.2.0",
@@ -63,7 +64,6 @@
     "@digimuza/graphql": "^0.0.1",
     "graphql": "^15.3.0",
     "graphql-request": "^4.3.0",
-    "graphql-ws": "^5.9.1",
     "ts-prime": "^1.0.0"
   }
 }
