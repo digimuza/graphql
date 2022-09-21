@@ -17,21 +17,23 @@ export type Requester<C = {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C)
 export function easySetupRequester(args: {
 	ws?: { url: string; wsImplementation?: unknown }
 	request?: { url: string }
-	headers: Record<string, string>
+	headers: Promise<() => Record<string, string>>
 }) {
 	const wsClient = args.ws
 		? createClient({
 				webSocketImpl: args.ws.wsImplementation,
 				url: args.ws.url,
-				connectionParams: {
-					headers: args.headers,
+				connectionParams: async () => {
+					return {
+						headers: args.headers,
+					}
 				},
 		  })
 		: undefined
 
 	const makeRequestClient = () => {
 		if (args.request == null) return
-		return new GraphQLClient(args.request.url, { headers: args.headers })
+		return new GraphQLClient(args.request.url, { headers: args.headers as any })
 	}
 	const requestClient = makeRequestClient()
 
