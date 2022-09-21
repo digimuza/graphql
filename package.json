@@ -1,7 +1,7 @@
 {
   "name": "@digimuza/graphql",
   "description": "Description",
-  "version": "0.1.5",
+  "version": "0.1.10",
   "publishConfig": {
     "access": "public"
   },
@@ -61,7 +61,6 @@
     "typescript": "4.5.x"
   },
   "dependencies": {
-    "@digimuza/graphql": "^0.0.1",
     "graphql": "^15.3.0",
     "graphql-request": "^4.3.0",
     "graphql-ws": "^5.11.1",
